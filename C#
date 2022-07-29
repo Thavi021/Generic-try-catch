@@ -1,0 +1,19 @@
+class Request{} 
+class BadRequest:Request{}
+class AnotherRequest:Request{}
+
+static Request HandleException(Func<Request> f)
+{
+    Request result ;
+    try
+    {
+        result = f();
+    }
+    catch (Exception ex)
+    {
+        result = new BadRequest();
+    }
+    return result;
+}
+
+static AnotherRequest SomeMethod(int i) => new AnotherRequest();  
